@@ -27,6 +27,7 @@
             alpha: 'The %s field must only contain alphabetical characters.',
             alpha_numeric: 'The %s field must only contain alpha-numeric characters.',
             alpha_dash: 'The %s field must only contain alpha-numeric characters, underscores, and dashes.',
+            comma_separated_alpha_numeric: 'The %s field must contain comma-separated alpha-numeric characters.',
             numeric: 'The %s field must contain only numbers.',
             integer: 'The %s field must contain an integer.',
             decimal: 'The %s field must contain a decimal number.',
@@ -55,6 +56,7 @@
         alphaRegex = /^[a-z]+$/i,
         alphaNumericRegex = /^[a-z0-9]+$/i,
         alphaDashRegex = /^[a-z0-9_\-]+$/i,
+        commaSeparatedAlphaNumericRegex = /^([a-zA-Z0-9]+)(,\s*[a-zA-Z0-9]+)*$/i,
         naturalRegex = /^[0-9]+$/i,
         naturalNoZeroRegex = /^[1-9][0-9]*$/i,
         ipRegex = /^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})$/i,
@@ -415,6 +417,10 @@
 
         alpha_numeric: function(field) {
             return (alphaNumericRegex.test(field.value));
+        },
+
+        comma_separated_alpha_numeric: function(field) {
+            return (commaSeparatedAlphaNumericRegex.test(field.value));
         },
 
         alpha_dash: function(field) {
